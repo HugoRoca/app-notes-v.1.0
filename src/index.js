@@ -3,13 +3,15 @@ const path = require("path");
 const exphbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const session = require("express-session");
-const flash = require('connect-flash')
+const flash = require("connect-flash");
 const {
   allowInsecurePrototypeAccess,
 } = require("@handlebars/allow-prototype-access");
 const Handlebars = require("handlebars");
+const passport = require("passport");
 const app = express();
 require("./database");
+require("./config/passport");
 
 // TODO Settings
 app.set("port", process.env.PORT || 3000);
@@ -36,14 +38,17 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(flash())
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 // TODO Global variables
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg')
-  res.locals.error_msg = req.flash('error_msg')
-  next()
-})
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 // TODO Routes
 app.use(require("./routes/index"));
