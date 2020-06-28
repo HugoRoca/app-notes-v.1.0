@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
 mongoose
   .connect(
-    "mongodb+srv://hugoroca:candy@cluster0-xu1hg.mongodb.net/db_notes?retryWrites=true&w=majority",
+    process.env.MONGO_URI,
     {
       useCreateIndex: true,
       useNewUrlParser: true,
