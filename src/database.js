@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose')
+require('dotenv').config()
 
 mongoose
   .connect(
@@ -7,8 +7,8 @@ mongoose
     {
       useCreateIndex: true,
       useNewUrlParser: true,
-      useFindAndModify: false,
+      useFindAndModify: false
     }
   )
-  .then(() => console.log("Connected mongo"))
-  .catch(console.error);
+  .then(() => console.log('Connected mongo'))
+  .catch(console.error)

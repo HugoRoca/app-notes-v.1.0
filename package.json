@@ -5,6 +5,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
+    "format": "prettier --write src/**/*.js",
+    "format:fix": "eslint src --fix",
+    "lint": "eslint src -f stylish",
+    "lint:code": "eslint src -f stylish",
+    "lint:test": "eslint test -f stylish",
+    "lint:report": "eslint src -f html -o reports/lint.html",
     "start": "node ./src/index.js"
   },
   "repository": {
@@ -32,6 +38,14 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
   }
 }
